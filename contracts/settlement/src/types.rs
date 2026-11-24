@@ -62,6 +62,10 @@ pub enum StorageKey {
     /// Cumulative total of every amount ever credited via `receive_payment` /
     /// `batch_receive_payment`, regardless of routing (pool or developer).
     TotalReceived,
+    /// Optional freeze contract address. When set, `receive_payment`,
+    /// `batch_receive_payment`, and `withdraw_developer_balance` consult it
+    /// before proceeding. `None` means no freeze check is performed.
+    FreezeContract,
 }
 
 /// Severity levels for admin broadcast messages.

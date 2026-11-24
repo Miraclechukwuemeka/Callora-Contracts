@@ -37,6 +37,7 @@ use soroban_sdk::contracterror;
 /// | 27   | ReplayDetected                | Settlement claim was replayed or out of order        |
 /// | 28   | BatchEmpty                    | Batch operation received an empty vector             |
 /// | 29   | BatchTooLarge                 | Batch operation exceeded the maximum allowed size    |
+/// | 30   | SystemFrozen                  | System is globally frozen via the configured freeze contract |
 #[contracterror]
 #[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u32)]
@@ -70,4 +71,6 @@ pub enum SettlementError {
     ReplayDetected = 27,
     BatchEmpty = 28,
     BatchTooLarge = 29,
+    /// System is globally frozen via the configured freeze contract (code 30).
+    SystemFrozen = 30,
 }

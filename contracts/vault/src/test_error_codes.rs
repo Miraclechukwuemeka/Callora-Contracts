@@ -43,6 +43,7 @@ fn vault_error_codes_are_stable_and_unique() {
         (35, VaultError::Slippage),
         (36, VaultError::RateLimited),
         (37, VaultError::ExceedsReserveCap),
+        (51, VaultError::Frozen),
     ];
 
     let mut seen = BTreeSet::new();
@@ -54,7 +55,7 @@ fn vault_error_codes_are_stable_and_unique() {
         );
     }
 
-    assert_eq!(seen.len(), 37);
+    assert_eq!(seen.len(), 38);
 }
 
 #[test]
@@ -98,6 +99,7 @@ fn error_code_docs_list_every_vault_code() {
         "| 35 | `Slippage` | Vault | Calculated fee in basis points exceeds the caller-supplied `max_fee_bps` limit |",
         "| 36 | `RateLimited` | Vault | Developer exceeded the configured rate limit |",
         "| 37 | `ExceedsReserveCap` | Vault | Deposit would exceed the configured per-token reserve cap |",
+        "| 51 | `Frozen` | Vault | System is globally frozen via the configured freeze contract |",
     ];
 
     for line in expected_lines {

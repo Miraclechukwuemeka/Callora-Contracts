@@ -48,6 +48,7 @@ use soroban_sdk::contracterror;
 /// | 44   | CallerNotInAllowlist           | Caller not in allowlist and not owner                    |
 /// | 49   | AdminCooldownActive            | Critical admin cool-off window is still active           |
 /// | 50   | InvalidAdminCooldown           | Admin cool-off window is outside accepted bounds         |
+/// | 51   | Frozen                         | System is globally frozen via the configured freeze contract |
 #[contracterror]
 #[repr(u32)]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
@@ -152,4 +153,6 @@ pub enum VaultError {
     AdminCooldownActive = 49,
     /// Admin cool-off window is outside the accepted bounds (code 50).
     InvalidAdminCooldown = 50,
+    /// System is globally frozen via the configured freeze contract (code 51).
+    Frozen = 51,
 }

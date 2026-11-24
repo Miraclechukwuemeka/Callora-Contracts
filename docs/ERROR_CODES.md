@@ -65,6 +65,7 @@ must not be reassigned once released.
 | 48 | `BelowMinTransferAmount` | Vault | Amount is below the vault's configured minimum transfer unit (rejects sub-unit/dust transfers); currently enforced on `propose_sweep` |
 | 49 | `AdminCooldownActive` | Vault | A critical admin action is still inside the global cool-off window |
 | 50 | `InvalidAdminCooldown` | Vault | Admin cool-off window is outside the accepted bounds |
+| 51 | `Frozen` | Vault | System is globally frozen via the configured freeze contract |
 
 ## Settlement
 
@@ -97,6 +98,9 @@ must not be reassigned once released.
 | 25 | `ClaimWindowClosed` | Settlement | Developer claim window is not currently open |
 | 26 | `MinBalanceViolation` | Settlement | Withdrawal would leave balance below the minimum |
 | 27 | `ReplayDetected` | Settlement | Settlement request reused or regressed the replay-guard ledger sequence |
+| 28 | `BatchEmpty` | Settlement | Batch operation received an empty vector |
+| 29 | `BatchTooLarge` | Settlement | Batch operation exceeded the maximum allowed size |
+| 30 | `SystemFrozen` | Settlement | System is globally frozen via the configured freeze contract |
 
 ## Revenue Pool
 

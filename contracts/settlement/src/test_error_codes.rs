@@ -33,6 +33,9 @@ fn settlement_error_codes_are_stable_and_unique() {
         (25, SettlementError::ClaimWindowClosed),
         (26, SettlementError::MinBalanceViolation),
         (27, SettlementError::ReplayDetected),
+        (28, SettlementError::BatchEmpty),
+        (29, SettlementError::BatchTooLarge),
+        (30, SettlementError::SystemFrozen),
     ];
 
     let mut seen = BTreeSet::new();
@@ -44,7 +47,7 @@ fn settlement_error_codes_are_stable_and_unique() {
         );
     }
 
-    assert_eq!(seen.len(), 27);
+    assert_eq!(seen.len(), 30);
 }
 
 #[test]
@@ -78,6 +81,9 @@ fn error_code_docs_list_every_settlement_code() {
         "| 25 | `ClaimWindowClosed` | Settlement | Developer claim window is not currently open |",
         "| 26 | `MinBalanceViolation` | Settlement | Withdrawal would leave balance below the minimum |",
         "| 27 | `ReplayDetected` | Settlement | Settlement request reused or regressed the replay-guard ledger sequence |",
+        "| 28 | `BatchEmpty` | Settlement | Batch operation received an empty vector |",
+        "| 29 | `BatchTooLarge` | Settlement | Batch operation exceeded the maximum allowed size |",
+        "| 30 | `SystemFrozen` | Settlement | System is globally frozen via the configured freeze contract |",
     ];
 
     for line in expected_lines {
